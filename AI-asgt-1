@@ -6,6 +6,13 @@ struct point{
 	float y;
 };
 
+void trail(int n){
+	for(int i=0;i<n;i++){
+		cout<<i<<" "<<endl;
+	}
+}
+
+
 int main(){
 	
 	int n;
@@ -21,7 +28,7 @@ int main(){
 			cin>>dist[j][i];
 		}
 	}
-
+	trail(n);
 	return 0;
 }
 
