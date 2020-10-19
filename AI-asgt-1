@@ -10,8 +10,7 @@ int main(){
 	
 	int n;
 	string iseuclidean;
-	cin>>iseuclidean;
-	cin>>n;
+	cin>>iseuclidean>>n;
 	vector<point> cities(n);
 	for(int i = 0;i<n;i++){
 		cin>>cities[i].x>>cities[i].y;
