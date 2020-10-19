@@ -7,11 +7,23 @@ struct point{
 	float y;
 };
 
-void trail(ll n){
+void trail(vector<ll> sequence,int n){
 	for(ll i=0;i<n;i++){
-		cout<<i<<" ";
+		cout<<sequence[i]<<" ";
 	}
 	cout<<endl;
+}
+void createtour(vector<vector<float>> V,ll n){
+	ll count = 0;
+	ll i = (rand()%n);
+	bool visited[n] = 0;
+	vector<ll> sequence (n);
+	sequence[count] = i; 
+	while(count < n){
+		float min = V[i][(i+1)%n];
+		for(int i = 
+	}
+	
 }
 
 
@@ -30,7 +42,7 @@ int main(){
 			cin>>dist[j][i];
 		}
 	}
-	trail(n);
+	createtours(dist,n);
 	return 0;
 }
 
