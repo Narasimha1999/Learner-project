@@ -16,7 +16,7 @@ void trail(int n){
 
 int main(){
 	
-	int n;
+	long long int n;
 	string iseuclidean;
 	cin>>iseuclidean>>n;
 	vector<point> cities(n);
