@@ -1,0 +1,76 @@
+#include<bits/stdc++.h>
+using namespace std;
+typedef long long int ll;
+
+struct point{
+	float x;
+	float y;
+};
+
+void printtour(vector<ll> vertices){
+	for(ll i=0;i<vertices.size();i++){
+		cout<<vertices[i]<<" ";
+	}
+	cout<<endl;
+}
+
+ll min_dist(vector<float> cust_dist,vector<bool> visited,ll n){
+	ll distance = LONG_MAX,ret_index;
+	for(ll i=0;i<n;i++){
+		if(!visited[i] && cust_dist[i]<distance){
+			distance = cust_dist[i];
+			ret_index = i;
+		}
+	}
+	return ret_index;
+}
+
+void createtour(vector<vector<float>> dist,ll n){
+	vector<ll> vertices;
+	ll req_dist=LONG_MAX;
+	for(ll k=0;k<n;k++){
+		ll distance = 0;
+		vector<bool> visited(n,false);
+		vector<float> cust_dist(n,LONG_MAX);
+		vector<ll> temp_vertices;
+		cust_dist[k] = 0;
+		for(ll i=0;i<n-1;i++){
+			ll u = min_dist(cust_dist,visited,n);
+			distance += cust_dist[u];
+			temp_vertices.push_back(u);
+			visited[u] = true;
+			for(ll j=0;j<n;j++){
+				if(!visited[j] && dist[u][j]!=0 && cust_dist[u]!=LONG_MAX &&
+				 dist[u][j]<cust_dist[j]){
+					cust_dist[j] = dist[u][j];
+				}
+			}
+		}
+		if(distance<req_dist && temp_vertices.size()==n-1){
+			req_dist = distance;
+			vertices = temp_vertices;
+		}
+	}
+	printtour(vertices);
+}
+
+
+int main(){
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	ll n;
+	string iseuclidean;
+	cin>>iseuclidean>>n;
+	vector<point> cities(n);
+	for(ll i = 0;i<n;i++){
+		cin>>cities[i].x>>cities[i].y;
+	}
+	vector<vector<float>> dist(n,vector<float>(n));
+	for(ll i =0;i<n;i++){
+		for(ll j=0;j<n;j++){
+			cin>>dist[i][j];
+		}
+	}
+	createtour(dist,n);
+	return 0;
+}
