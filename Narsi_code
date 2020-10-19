@@ -47,9 +47,12 @@ void createtour(vector<vector<float>> dist,ll n){
 				}
 			}
 		}
-		if(distance<req_dist && temp_vertices.size()==n){
-			req_dist = distance;
-			vertices = temp_vertices;
+		if(dist[temp_vertices[n-1]][k]!=0){
+			distance += dist[temp_vertices[n-1]][k];
+			if(distance<req_dist && temp_vertices.size()==n){
+				req_dist = distance;
+				vertices = temp_vertices;
+			}
 		}
 	}
 	printtour(vertices);
