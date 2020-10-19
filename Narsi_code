@@ -15,7 +15,7 @@ void printtour(vector<ll> vertices){
 }
 
 ll min_dist(vector<float> cust_dist,vector<bool> visited,ll n){
-	ll distance = LONG_MAX,ret_index;
+	ll distance = LONG_MAX,ret_index=-1;
 	for(ll i=0;i<n;i++){
 		if(!visited[i] && cust_dist[i]<distance){
 			distance = cust_dist[i];
@@ -34,8 +34,9 @@ void createtour(vector<vector<float>> dist,ll n){
 		vector<float> cust_dist(n,LONG_MAX);
 		vector<ll> temp_vertices;
 		cust_dist[k] = 0;
-		for(ll i=0;i<n-1;i++){
+		for(ll i=0;i<n+1;i++){
 			ll u = min_dist(cust_dist,visited,n);
+			if(u==-1) break;
 			distance += cust_dist[u];
 			temp_vertices.push_back(u);
 			visited[u] = true;
@@ -46,7 +47,7 @@ void createtour(vector<vector<float>> dist,ll n){
 				}
 			}
 		}
-		if(distance<req_dist && temp_vertices.size()==n-1){
+		if(distance<req_dist && temp_vertices.size()==n){
 			req_dist = distance;
 			vertices = temp_vertices;
 		}
