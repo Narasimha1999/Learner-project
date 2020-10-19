@@ -1,21 +1,25 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-int main(){
+struct point{
+	int x;
+	int y;
+};
 
+int main(){
+	
 	int n;
-	string s;
-	cin>>s;
+	string iseuclidean;
+	cin>>iseuclidean;
 	cin>>n;
-	float pos[n][2];
+	vector<point> cities(n);
 	for(int i = 0;i<n;i++){
-		cin>>pos[i][0];
-		cin>>pos[i][1];
+		cin>>cities[i].x>>cities[i].y;
 	}
-	float dis[n][n];
+	vector<vector<float>> dist(n,vector<float>(n));
 	for(int i =0;i<n;i++){
 		for(int j=0;j<n;j++){
-			cin>>dis[j][i];
+			cin>>dist[j][i];
 		}
 	}
 
