@@ -1,13 +1,14 @@
 #include<bits/stdc++.h>
 using namespace std;
+typedef long long int ll;
 
 struct point{
 	float x;
 	float y;
 };
 
-void trail(int n){
-	for(int i=0;i<n;i++){
+void trail(ll n){
+	for(ll i=0;i<n;i++){
 		cout<<i<<" ";
 	}
 	cout<<endl;
@@ -16,15 +17,15 @@ void trail(int n){
 
 int main(){
 	
-	long long int n;
+	ll n;
 	string iseuclidean;
 	cin>>iseuclidean>>n;
 	vector<point> cities(n);
-	for(int i = 0;i<n;i++){
+	for(ll i = 0;i<n;i++){
 		cin>>cities[i].x>>cities[i].y;
 	}
 	vector<vector<float>> dist(n,vector<float>(n));
-	for(int i =0;i<n;i++){
+	for(ll i =0;i<n;i++){
 		for(int j=0;j<n;j++){
 			cin>>dist[j][i];
 		}
